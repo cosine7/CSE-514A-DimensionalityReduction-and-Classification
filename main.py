@@ -96,8 +96,9 @@ def train_models(dataset, name):
     # fit('multinomial_naive_bayes', name, dataset, MultinomialNB(), {'alpha': [1, 2, 3, 4, 5]},
     #     'alpha', RFE(DecisionTreeClassifier(), n_features_to_select=4))
     # https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.SGDClassifier.html#sklearn.linear_model.SGDClassifier
-    fit('stochastic_gradient_descent', name, dataset, SGDClassifier(), {'alpha': [1, 2, 3, 4, 5]},
-        'alpha', RFE(DecisionTreeClassifier(), n_features_to_select=4))
+    fit('stochastic_gradient_descent', name, dataset, SGDClassifier(),
+        {'alpha': [0.0001, 0.00015, 0.0002, 0.00025, 0.0003]},
+        'alpha', SelectKBest(k=4))
 
 
 
