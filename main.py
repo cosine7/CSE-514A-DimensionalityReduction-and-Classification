@@ -77,29 +77,28 @@ def fit(model, name, dataset, classifier, hyperparameter, x_label, dr_method):
 
 
 def train_models(dataset, name):
-    # # https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html
-    # fit('knn', name, dataset, KNeighborsClassifier(), {'n_neighbors': [1, 2, 3, 4, 5]}, 'n_neighbors',
-    #     PCA(n_components=4))
+    # https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html
+    fit('knn', name, dataset, KNeighborsClassifier(), {'n_neighbors': [1, 2, 3, 4, 5]}, 'n_neighbors',
+        PCA(n_components=4))
     # https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html
-    # fit('decision_tree', name, dataset, DecisionTreeClassifier(), {'max_depth': [1, 2, 3, 4, 5]}, 'max_depth',
-    #     SelectKBest(k=4))
-    # # https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html
-    # fit('random_forest', name, dataset, RandomForestClassifier(), {'max_depth': [1, 2, 3, 4, 5]}, 'max_depth',
-    #     SequentialFeatureSelector(KNeighborsClassifier(n_neighbors=3), n_features_to_select=4, direction='backward'))
-    # # https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html
-    # fit('svm', name, dataset, SVC(), {'C': [1, 2, 3, 4, 5]}, 'C',
-    #     SequentialFeatureSelector(KNeighborsClassifier(n_neighbors=3), n_features_to_select=4))
-    # # https://scikit-learn.org/stable/modules/generated/sklearn.neural_network.MLPClassifier.html#sklearn.neural_network.MLPClassifier
-    # fit('ann', name, dataset, MLPClassifier(max_iter=1500), {'hidden_layer_sizes': [100, 150, 200, 250, 300]},
-    #     'hidden_layer_sizes', SelectKBest(chi2, k=4))
+    fit('decision_tree', name, dataset, DecisionTreeClassifier(), {'max_depth': [1, 2, 3, 4, 5]}, 'max_depth',
+        SelectKBest(k=4))
+    # https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html
+    fit('random_forest', name, dataset, RandomForestClassifier(), {'max_depth': [1, 2, 3, 4, 5]}, 'max_depth',
+        SequentialFeatureSelector(KNeighborsClassifier(n_neighbors=3), n_features_to_select=4, direction='backward'))
+    # https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html
+    fit('svm', name, dataset, SVC(), {'C': [1, 2, 3, 4, 5]}, 'C',
+        SequentialFeatureSelector(KNeighborsClassifier(n_neighbors=3), n_features_to_select=4))
+    # https://scikit-learn.org/stable/modules/generated/sklearn.neural_network.MLPClassifier.html#sklearn.neural_network.MLPClassifier
+    fit('ann', name, dataset, MLPClassifier(max_iter=1500), {'hidden_layer_sizes': [100, 150, 200, 250, 300]},
+        'hidden_layer_sizes', SelectKBest(chi2, k=4))
     # https://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.MultinomialNB.html#sklearn.naive_bayes.MultinomialNB
-    # fit('multinomial_naive_bayes', name, dataset, MultinomialNB(), {'alpha': [1, 2, 3, 4, 5]},
-    #     'alpha', RFE(DecisionTreeClassifier(), n_features_to_select=4))
+    fit('multinomial_naive_bayes', name, dataset, MultinomialNB(), {'alpha': [1, 2, 3, 4, 5]},
+        'alpha', RFE(DecisionTreeClassifier(), n_features_to_select=4))
     # https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.SGDClassifier.html#sklearn.linear_model.SGDClassifier
     fit('stochastic_gradient_descent', name, dataset, SGDClassifier(),
         {'alpha': [0.0001, 0.00015, 0.0002, 0.00025, 0.0003]},
         'alpha', SelectKBest(k=4))
-
 
 
 train_models(data_hk, 'HK')
